@@ -4976,7 +4976,6 @@ scripts = [
       (store_script_param_1, ":troop_id"),
 
       (try_begin),
-        (is_between, "$g_talk_troop", ransom_brokers_begin, ransom_brokers_end),
         (store_character_level, ":troop_level", ":troop_id"),
         (assign, ":ransom_amount", ":troop_level"),
         (val_add, ":ransom_amount", 10),
