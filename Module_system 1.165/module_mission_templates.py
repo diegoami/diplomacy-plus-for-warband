@@ -2594,6 +2594,14 @@ mission_templates = [
          #morale effect = min : -2100(party morale is 0), average : 0(party morale is 70), max : 900(party morale is 100)
          #min starting : 3600, max starting  : 9600, average starting : 7200
          (agent_set_slot, ":agent_no", slot_agent_courage_score, ":initial_courage_score"), 
+         (get_player_agent_no, ":player_agent"),
+         (agent_get_team, ":player_team", ":player_agent"),
+         (team_give_order, ":player_team", grc_everyone, mordr_hold),
+         (team_give_order, ":player_team", grc_cavalry, mordr_fall_back),
+         (team_give_order, ":player_team", grc_archers, mordr_spread_out	),
+         (team_give_order, ":player_team", grc_infantry, mordr_advance	)  
+         
+         
          ]),
 
       common_battle_init_banner,
@@ -3699,7 +3707,7 @@ mission_templates = [
     ]
     ##diplomacy begin
     + dplmc_battle_mode_triggers,
-    ##diplomacy end
+    ##diplomacyea end
   ),
   
 
