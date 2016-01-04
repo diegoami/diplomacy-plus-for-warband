@@ -33627,13 +33627,6 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
        ]],
 
   [anyone,"tavernkeeper_job_result_2", [], "I'll keep my ears open for other opportunities. You may want to ask again from time to time.", "close_window",[]],
-  [anyone|plyr,"tavernkeeper_talk", [],
-  "I have some prisoners to sell...", "ransom_broker_sell_prisoners_2",
-   [[change_screen_trade_prisoners]]],
-#  [anyone, "ransom_broker_sell_prisoners_2", [], "You take more prisoners, bring them to me. I will pay well.", "close_window",[]],
-  [anyone, "ransom_broker_sell_prisoners_2", [], "I will be staying here for a few days. Let me know if you need my services.", "close_window",[]],
-
-
   [anyone|plyr,"tavernkeeper_talk", [], "I guess I should leave now.", "close_window",[]],
 
 #Tavern Talk (with companions)
