@@ -1069,6 +1069,112 @@ common_siege_init = (
     (call_script, "script_music_set_situation_with_culture", mtf_sit_siege),
     ])
 
+anti_cavalry_formation = (
+     0, 0, 0,
+      [(try_begin),
+        (key_clicked, key_f9),
+         (get_player_agent_no, ":player_agent"),
+         (agent_get_team, ":player_team", ":player_agent"),
+         (team_give_order, ":player_team", grc_everyone, mordr_hold),
+         (team_give_order, ":player_team", grc_cavalry, mordr_fall_back),
+         (team_give_order, ":player_team", grc_cavalry, mordr_fall_back),
+         (display_message,"@Preparing Anti Cavalry formation."),
+       (try_end),
+       ],  [])
+anti_infantry_formation = (
+     0, 0, 0,
+      [(try_begin),
+        (key_clicked, key_f10),
+         (get_player_agent_no, ":player_agent"),
+         (agent_get_team, ":player_team", ":player_agent"),
+            
+         (team_give_order, ":player_team", grc_everyone, mordr_hold),
+         (team_give_order, ":player_team", grc_cavalry, mordr_fall_back),
+         (team_give_order, ":player_team", grc_archers, mordr_spread_out	),
+         (team_give_order, ":player_team", grc_infantry, mordr_advance	)  ,
+         (display_message,"@Preparing Anty Infantry formation."),
+       (try_end)
+       ],  [])
+anti_archer_formation =   (
+    0, 0, 0,
+      [(try_begin),
+         (key_clicked, key_f11),
+           (get_player_agent_no, ":player_agent"),
+           (agent_get_team, ":player_team", ":player_agent"),
+           (team_give_order, ":player_team", grc_everyone, mordr_hold),
+           (team_give_order, ":player_team", grc_cavalry, mordr_fall_back),
+           (team_give_order, ":player_team", grc_cavalry, mordr_fall_back),
+           (team_give_order, ":player_team", grc_archers, mordr_spread_out	),
+           (team_give_order, ":player_team", grc_infantry, mordr_fall_back	)  ,
+           (display_message,"@Preparing Anti Archers formation."),
+         (try_end),
+       ],  [])
+
+#Taunting system
+common_taunting_system = (
+  0, 0, 180, [(key_clicked, key_o),],
+  [
+       (get_player_agent_no, ":cool_man"),
+       (agent_get_troop_id, ":cool_trp", ":cool_man"),
+       (store_skill_level, ":i_skl_level", "skl_ironflesh", ":cool_trp"),         
+       (agent_get_position, pos1, ":cool_man"),
+        (assign, ":t_value", 100),
+         (try_begin),
+          (eq, ":i_skl_level", 1),
+          (assign, ":t_value", 150),
+           (else_try),
+          (eq, ":i_skl_level", 2),
+          (assign, ":t_value", 200),
+           (else_try),
+          (eq, ":i_skl_level", 3),
+          (assign, ":t_value", 250),
+           (else_try),
+          (eq, ":i_skl_level", 4),
+          (assign, ":t_value", 300),
+           (else_try),
+          (eq, ":i_skl_level", 5),
+          (assign, ":t_value", 350),
+           (else_try),
+          (eq, ":i_skl_level", 6),
+          (assign, ":t_value", 400),
+           (else_try),
+          (eq, ":i_skl_level", 7),
+          (assign, ":t_value", 450),
+           (else_try),
+          (eq, ":i_skl_level", 8),
+          (assign, ":t_value", 500),
+           (else_try),
+          (eq, ":i_skl_level", 9),
+          (assign, ":t_value", 550),
+           (else_try),
+          (eq, ":i_skl_level", 10),
+          (assign, ":t_value", 600),
+         (try_end),
+        #(val_add, ":t_value", 3000), #DEBUG
+        (assign, reg0, ":t_value"),
+        (try_for_agents, ":taunted"),
+         (agent_get_position, pos2, ":taunted"),
+         (get_distance_between_positions, ":t_distance", pos1, pos2),
+         (le,":t_distance", ":t_value"),
+         (agent_is_alive, ":taunted"),
+         (neg|agent_is_ally, ":taunted"),
+          (agent_force_rethink, ":taunted"),
+          (agent_clear_relations_with_agents, ":taunted"),
+          (agent_set_is_alarmed, ":taunted", 0),
+          (agent_set_look_target_agent, ":taunted", ":cool_man"),
+         (try_begin),
+           (agent_is_alive, ":cool_man"),
+           (agent_add_relation_with_agent, ":taunted", ":cool_man", -1),
+           (agent_set_is_alarmed, ":taunted", 1),
+           (agent_set_scripted_destination, ":taunted", pos1),
+        (try_end),
+      (try_end),
+      #(agent_get_number_of_enemies_following, ":t_taunted", ":cool_man"),
+      #(assign, reg1, ":t_taunted"),
+      (display_message, "@ Taunt launched. {reg0} is the taunt range."),
+      (play_sound, "snd_cow_moo")
+    ])    
+    
 common_music_situation_update = (
   30, 0, 0, [],
   [
@@ -2654,46 +2760,10 @@ mission_templates = [
         
     
      ]),
-      (0, 0, 0,
-      [(try_begin),
-        (key_clicked, key_f9),
-         (get_player_agent_no, ":player_agent"),
-         (agent_get_team, ":player_team", ":player_agent"),
-         (team_give_order, ":player_team", grc_everyone, mordr_hold),
-         (team_give_order, ":player_team", grc_cavalry, mordr_fall_back),
-         (team_give_order, ":player_team", grc_cavalry, mordr_fall_back),
-         (display_message,"@Preparing Anti Cavalry formation."),
-       (try_end),
-       ],  []),      
-     (0, 0, 0,
-      [(try_begin),
-        (key_clicked, key_f10),
-         (get_player_agent_no, ":player_agent"),
-         (agent_get_team, ":player_team", ":player_agent"),
-            
-         (team_give_order, ":player_team", grc_everyone, mordr_hold),
-         (team_give_order, ":player_team", grc_cavalry, mordr_fall_back),
-         (team_give_order, ":player_team", grc_archers, mordr_spread_out	),
-         (team_give_order, ":player_team", grc_infantry, mordr_advance	)  ,
-         (display_message,"@Preparing Anty Infantry formation."),
-       (try_end)
-       ],  []),
-   (0, 0, 0,
-      [(try_begin),
-         (key_clicked, key_f11),
-           (get_player_agent_no, ":player_agent"),
-           (agent_get_team, ":player_team", ":player_agent"),
-           (team_give_order, ":player_team", grc_everyone, mordr_hold),
-           (team_give_order, ":player_team", grc_cavalry, mordr_fall_back),
-           (team_give_order, ":player_team", grc_cavalry, mordr_fall_back),
-           (team_give_order, ":player_team", grc_archers, mordr_spread_out	),
-           (team_give_order, ":player_team", grc_infantry, mordr_fall_back	)  ,
-           (display_message,"@Preparing Anti Archers formation."),
-         (try_end),
-       ],  []),
-   
-       
-       
+     anti_cavalry_formation,
+     anti_archer_formation,
+     anti_infantry_formation,
+        
 
       
       (0, 0, ti_once, [], [(assign,"$g_battle_won",0),
@@ -2713,7 +2783,7 @@ mission_templates = [
 
       common_music_situation_update,
       common_battle_check_friendly_kills,
-
+      common_taunting_system,
       (1, 0, 5, [
                               
       #new (25.11.09) starts (sdsd = TODO : make a similar code to also helping ally encounters)
@@ -2892,6 +2962,11 @@ mission_templates = [
       common_battle_check_friendly_kills,
       common_battle_check_victory_condition,
       common_battle_victory_display,
+      anti_cavalry_formation,
+      anti_archer_formation,
+      anti_infantry_formation,
+      common_taunting_system,
+        
 
       (1, 4,
       ##diplomacy begin
@@ -2975,6 +3050,10 @@ mission_templates = [
                       
                            ]),
 
+      anti_cavalry_formation,
+      anti_archer_formation,
+      anti_infantry_formation,
+      common_taunting_system,  
       common_music_situation_update,
       common_battle_check_friendly_kills,
 
@@ -3283,7 +3362,10 @@ mission_templates = [
       common_battle_check_friendly_kills,
       common_battle_check_victory_condition,
       common_battle_victory_display,
-
+     anti_cavalry_formation,
+     anti_archer_formation,
+     anti_infantry_formation,
+        
       (1, 4,
       ##diplomacy begin
       0,
@@ -3372,6 +3454,10 @@ mission_templates = [
                            (team_give_order, ":player_team", grc_everyone, mordr_hold)
                            ]),
       
+      anti_cavalry_formation,
+      anti_archer_formation,
+      anti_infantry_formation,
+        
       #AI Tiggers
       (0, 0, ti_once, [
           (assign, "$defender_team", 0),
@@ -3501,7 +3587,7 @@ mission_templates = [
       
       common_music_situation_update,
       common_battle_check_friendly_kills,
-
+      common_taunting_system,
       (1, 60, ti_once, [(store_mission_timer_a, reg(1)),
                         (ge, reg(1), 10),
                         (all_enemies_defeated, 2),
@@ -3594,7 +3680,8 @@ mission_templates = [
       common_music_situation_update,
       common_siege_ai_trigger_init,
       common_siege_ai_trigger_init_2,
-
+            common_taunting_system,
+ 
       (0, 0, ti_once,
        [
          (set_show_messages, 0),
@@ -3693,6 +3780,8 @@ mission_templates = [
       common_battle_order_panel,
       common_battle_order_panel_tick,
       common_inventory_not_available,
+       common_taunting_system,
+ 
 
       (ti_on_agent_killed_or_wounded, 0, 0, [],
        [
