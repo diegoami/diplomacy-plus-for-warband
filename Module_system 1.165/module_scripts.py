@@ -63709,3 +63709,5 @@ Born at {s43}^Contact in {s44} of the {s45}.^\
 ##diplomacy end+
 
 ]
+
+

@@ -2593,15 +2593,8 @@ mission_templates = [
          #average = 5000 + 700 + 1500 = 7200; min : 5700, max : 8700
          #morale effect = min : -2100(party morale is 0), average : 0(party morale is 70), max : 900(party morale is 100)
          #min starting : 3600, max starting  : 9600, average starting : 7200
-         (agent_set_slot, ":agent_no", slot_agent_courage_score, ":initial_courage_score"), 
-         (get_player_agent_no, ":player_agent"),
-         (agent_get_team, ":player_team", ":player_agent"),
-         (team_give_order, ":player_team", grc_everyone, mordr_hold),
-         (team_give_order, ":player_team", grc_cavalry, mordr_fall_back),
-         (team_give_order, ":player_team", grc_archers, mordr_spread_out	),
-         (team_give_order, ":player_team", grc_infantry, mordr_advance	)  
-         
-         
+         (agent_set_slot, ":agent_no", slot_agent_courage_score, ":initial_courage_score") 
+            
          ]),
 
       common_battle_init_banner,
@@ -2657,8 +2650,50 @@ mission_templates = [
          (assign, "$g_latest_order_1", 1), 
          (assign, "$g_latest_order_2", 1), 
          (assign, "$g_latest_order_3", 1), 
-         (assign, "$g_latest_order_4", 1), 
-         ]),
+         (assign, "$g_latest_order_4", 1),
+        
+    
+     ]),
+      (0, 0, 0,
+      [(try_begin),
+        (key_clicked, key_f9),
+         (get_player_agent_no, ":player_agent"),
+         (agent_get_team, ":player_team", ":player_agent"),
+         (team_give_order, ":player_team", grc_everyone, mordr_hold),
+         (team_give_order, ":player_team", grc_cavalry, mordr_fall_back),
+         (team_give_order, ":player_team", grc_cavalry, mordr_fall_back),
+         (display_message,"@Preparing Anti Cavalry formation."),
+       (try_end),
+       ],  []),      
+     (0, 0, 0,
+      [(try_begin),
+        (key_clicked, key_f10),
+         (get_player_agent_no, ":player_agent"),
+         (agent_get_team, ":player_team", ":player_agent"),
+            
+         (team_give_order, ":player_team", grc_everyone, mordr_hold),
+         (team_give_order, ":player_team", grc_cavalry, mordr_fall_back),
+         (team_give_order, ":player_team", grc_archers, mordr_spread_out	),
+         (team_give_order, ":player_team", grc_infantry, mordr_advance	)  ,
+         (display_message,"@Preparing Anty Infantry formation."),
+       (try_end)
+       ],  []),
+   (0, 0, 0,
+      [(try_begin),
+         (key_clicked, key_f11),
+           (get_player_agent_no, ":player_agent"),
+           (agent_get_team, ":player_team", ":player_agent"),
+           (team_give_order, ":player_team", grc_everyone, mordr_hold),
+           (team_give_order, ":player_team", grc_cavalry, mordr_fall_back),
+           (team_give_order, ":player_team", grc_cavalry, mordr_fall_back),
+           (team_give_order, ":player_team", grc_archers, mordr_spread_out	),
+           (team_give_order, ":player_team", grc_infantry, mordr_fall_back	)  ,
+           (display_message,"@Preparing Anti Archers formation."),
+         (try_end),
+       ],  []),
+   
+       
+       
 
       
       (0, 0, ti_once, [], [(assign,"$g_battle_won",0),
@@ -2671,6 +2706,9 @@ mission_templates = [
                            (assign, "$g_dplmc_cam_activated", 0),
                            (assign, "$g_dplmc_charge_when_dead", 0),
                            ##diplomacy end
+                            (get_player_agent_no, ":player_agent"),
+                            (agent_get_team, ":player_team", ":player_agent"),
+                            (team_give_order, ":player_team", grc_everyone, mordr_hold)
                            ]),
 
       common_music_situation_update,
@@ -2803,8 +2841,12 @@ mission_templates = [
 
     ]
     ##diplomacy begin
-    + dplmc_battle_mode_triggers,
+    + dplmc_battle_mode_triggers
     ##diplomacy end
+        
+    
+         
+    
   ),
 
   (
@@ -2828,7 +2870,8 @@ mission_templates = [
         (assign, "$g_battle_result", -1),
         (call_script, "script_count_mission_casualties_from_agents"),
         (finish_mission,0),]),
-
+       
+        
       (0, 0, ti_once, [], [(assign, "$g_battle_won", 0),
                            (assign, "$defender_reinforcement_stage", 0),
                            (assign, "$attacker_reinforcement_stage", 0),
@@ -2839,6 +2882,10 @@ mission_templates = [
                              (add_reinforcements_to_entry, 1, 29),
                            (try_end),
                            (call_script, "script_combat_music_set_situation_with_culture"),
+                           (get_player_agent_no, ":player_agent"),
+                           (agent_get_team, ":player_team", ":player_agent"),
+                           (team_give_order, ":player_team", grc_everyone, mordr_hold)
+    
                            ]),
 
       common_music_situation_update,
@@ -2916,11 +2963,16 @@ mission_templates = [
         (call_script, "script_simulate_retreat", 10, 20, 1),
         (call_script, "script_count_mission_casualties_from_agents"),
         (finish_mission,0),]),
-
+  
       (0, 0, ti_once, [], [(assign,"$g_battle_won",0),
                            (assign,"$defender_reinforcement_stage",0),
                            (assign,"$attacker_reinforcement_stage",0),
                            (call_script, "script_combat_music_set_situation_with_culture"),
+                              
+                           (get_player_agent_no, ":player_agent"),
+                           (agent_get_team, ":player_team", ":player_agent"),
+                           (team_give_order, ":player_team", grc_everyone, mordr_hold)
+                      
                            ]),
 
       common_music_situation_update,
@@ -3215,6 +3267,9 @@ mission_templates = [
                            (assign, "$g_dplmc_charge_when_dead", 1),
                            ##diplomacy end
                            (call_script, "script_music_set_situation_with_culture", mtf_sit_ambushed),
+                           (get_player_agent_no, ":player_agent"),
+                           (agent_get_team, ":player_team", ":player_agent"),
+                           (team_give_order, ":player_team", grc_everyone, mordr_hold)
                            ]),
       
       #AI Tiggers
@@ -3312,6 +3367,9 @@ mission_templates = [
                            (assign, "$g_dplmc_charge_when_dead", 1),
                            ##diplomacy end
                            (call_script, "script_music_set_situation_with_culture", mtf_sit_ambushed),
+                                                      (get_player_agent_no, ":player_agent"),
+                           (agent_get_team, ":player_team", ":player_agent"),
+                           (team_give_order, ":player_team", grc_everyone, mordr_hold)
                            ]),
       
       #AI Tiggers
@@ -3544,6 +3602,9 @@ mission_templates = [
          (team_give_order, "$attacker_team", grc_everyone, mordr_spread_out),
          (team_give_order, "$attacker_team", grc_everyone, mordr_spread_out),
          (set_show_messages, 1),
+         (get_player_agent_no, ":player_agent"),
+         (agent_get_team, ":player_team", ":player_agent"),
+         (team_give_order, ":player_team", grc_everyone, mordr_hold)
          ], []),
       
       (ti_on_agent_killed_or_wounded, 0, 0, [],
