@@ -949,6 +949,9 @@ slot_troop_kingsupport_objection_state  = 145 #0, default, 1, needs to voice, 2,
 slot_troop_days_on_mission		        = 150
 slot_troop_current_mission			    = 151
 slot_troop_mission_object               = 152
+slot_troop_horse = 601
+
+
 npc_mission_kingsupport					= 1
 npc_mission_gather_intel                = 2
 npc_mission_peace_request               = 3

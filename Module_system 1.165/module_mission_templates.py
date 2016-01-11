@@ -301,6 +301,25 @@ dplmc_battle_mode_triggers = [
   ]
 ##diplomacy end
 
+call_horse_trigger_1 = (0, 0, 3, [(key_clicked, key_m)], [
+      (get_player_agent_no,":agent"),
+      (agent_get_horse,":horse",":agent"),
+      (neg|gt,":horse",0),
+      (troop_get_slot,":horse",":agent",slot_troop_horse),
+      (agent_play_sound,":agent","snd_horse_snort"),
+      (display_message,"@You whistle for your horse."),
+      (gt,":horse",0),
+      (agent_is_alive,":horse"),
+      (agent_get_position, pos1, ":agent"),
+      (agent_set_scripted_destination, ":horse", pos1, 0),
+    ])
+
+call_horse_trigger_2 = (0.2, 0, ti_once, [], [
+      (get_player_agent_no,":agent"),
+      (agent_get_horse,":horse",":agent"),
+      (troop_set_slot,":agent",slot_troop_horse,":horse"),
+    ])
+
 multiplayer_server_check_belfry_movement = (
   0, 0, 0, [],
   [
@@ -2763,6 +2782,9 @@ mission_templates = [
      anti_cavalry_formation,
      anti_archer_formation,
      anti_infantry_formation,
+     call_horse_trigger_1,
+     call_horse_trigger_2,
+     
         
 
       
@@ -2965,6 +2987,9 @@ mission_templates = [
       anti_cavalry_formation,
       anti_archer_formation,
       anti_infantry_formation,
+      call_horse_trigger_1,
+      call_horse_trigger_2,
+     
       common_taunting_system,
         
 
@@ -3053,7 +3078,10 @@ mission_templates = [
       anti_cavalry_formation,
       anti_archer_formation,
       anti_infantry_formation,
-      common_taunting_system,  
+      common_taunting_system,
+      call_horse_trigger_1,
+      call_horse_trigger_2,
+           
       common_music_situation_update,
       common_battle_check_friendly_kills,
 
@@ -3365,6 +3393,8 @@ mission_templates = [
      anti_cavalry_formation,
      anti_archer_formation,
      anti_infantry_formation,
+     call_horse_trigger_1,
+     call_horse_trigger_2,
         
       (1, 4,
       ##diplomacy begin
@@ -3457,6 +3487,9 @@ mission_templates = [
       anti_cavalry_formation,
       anti_archer_formation,
       anti_infantry_formation,
+      call_horse_trigger_1,
+     call_horse_trigger_2,
+     
         
       #AI Tiggers
       (0, 0, ti_once, [
