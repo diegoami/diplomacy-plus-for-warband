@@ -1,8 +1,8 @@
-#DIPLOMACY 4.3 PLUS
+# DIPLOMACY 4.3 PLUS
 
 Just the Diplomacy 4.3 Mod with some public domain scripts. 
 
-* Diplomacy v4.3, Credit: Waihti, hessuu, fisheye, rubik, jrider, Mjöllnir, Akmar Nibelung and zParsifal
+* Diplomacy v4.3, Credit: Waihti, hessuu, fisheye, rubik, jrider, MjÃ¶llnir, Akmar Nibelung and zParsifal
 * [OSP] Customizable sparring matches v1.0, Credit: Jinnai, modified by lazeras
 * [OSP] Bodyguards/Escorts in Town/Village Scenes v2.0,  Credit: Caba`dr
 * [OSP] Can sell slaves to manhunters, can attack manhunters,  Credit: Glabrezu
