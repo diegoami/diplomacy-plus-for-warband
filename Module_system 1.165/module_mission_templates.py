@@ -3724,7 +3724,6 @@ mission_templates = [
          (set_show_messages, 1),
          (get_player_agent_no, ":player_agent"),
          (agent_get_team, ":player_team", ":player_agent"),
-         (team_give_order, ":player_team", grc_everyone, mordr_hold)
          ], []),
       
       (ti_on_agent_killed_or_wounded, 0, 0, [],

@@ -58171,7 +58171,9 @@ scripts = [
 			(try_begin), #new-begin
 				(neq, ":faction_no", "fac_player_supporters_faction"),
 				(this_or_next|troop_slot_eq, ":troop_no", slot_troop_occupation, slto_inactive),
-					(troop_slot_eq, ":troop_no", slot_troop_occupation, slto_retirement),
+				   #(troop_slot_eq, ":troop_no", slot_troop_occupation, slto_retirement), #original code comented
+                   (this_or_next|troop_slot_eq, ":troop_no", slot_troop_occupation, slto_retirement),
+                   (troop_slot_eq, ":troop_no", slot_troop_occupation, dplmc_slto_exile),
 				(troop_set_slot, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
 		    (try_end), #new-end
 
