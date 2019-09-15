@@ -11,4 +11,4 @@ Download from Nexus: https://www.nexusmods.com/mbwarband/mods/6063
 * Troops don't charge at the beginning of a battle, but hold ground (except for siege defense)
 * F9, F10 and F11 Keys set up "Anti-Cavalry", "Anti-Infantry" and "Anti-Archers" formations respectively
 * Fixes lord return from exile, Credit: Dj_FRedy
-* Added menu to import/export NPC, Credit 
+* Added menu to import/export NPC, Credit rubik
