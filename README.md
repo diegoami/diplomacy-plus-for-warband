@@ -1,4 +1,4 @@
-#DIPLOMACY 4.3 PLUS
+# DIPLOMACY 4.3 PLUS
 
 Just the Diplomacy 4.3 Mod with some public domain scripts. 
 Download from Nexus: https://www.nexusmods.com/mbwarband/mods/6063
