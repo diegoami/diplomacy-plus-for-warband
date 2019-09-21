@@ -6328,11 +6328,12 @@ simple_triggers = [
 		(assign, ":num_exiles", 0),
 		#iterate over lords from a random start point, wrapping back to zero
 		(store_random_in_range, ":rand_no", lords_begin, lords_end),
-		(try_for_range, ":index", lords_begin, lords_end),
+        (val_sub, ":rand_no", lords_begin),
+        (try_for_range, ":index", lords_begin, lords_end),
 		  (store_add, ":troop_no", ":rand_no", ":index"),
 		  (try_begin),
 			 #wrap back around when you go off the end
-			  (ge, ":troop_no", lords_end),
+			(ge, ":troop_no", lords_end),
 			(val_sub, ":troop_no", lords_end),
 			(val_add, ":troop_no", lords_begin),
 		  (try_end),
