@@ -15,4 +15,4 @@ Download from Nexus: https://www.nexusmods.com/mbwarband/mods/6063
 * Loop to correctly select a lord for return from exile 
 
 
-Note: A new version can be found [here](https://github.com/diegoami/diplomacy-plus-for-warband)
+Note: A new version can be found [here](https://github.com/diegoami/Diplomacy_4_3-_Steam_enhanced)
