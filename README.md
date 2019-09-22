@@ -12,4 +12,7 @@ Download from Nexus: https://www.nexusmods.com/mbwarband/mods/6063
 * F9, F10 and F11 Keys set up "Anti-Cavalry", "Anti-Infantry" and "Anti-Archers" formations respectively
 * Fixes lord return from exile, Credit: Dj_FRedy
 * Added menu to import/export NPC, Credit rubik
-* Loop to correctly select a lord for return from exile fixed
+* Loop to correctly select a lord for return from exile 
+
+
+Note: A new version can be found [here](https://github.com/diegoami/diplomacy-plus-for-warband)
