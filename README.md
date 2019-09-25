@@ -1,5 +1,11 @@
 # DIPLOMACY 4.3 PLUS
 
+**IMPORTANT**: A version based on a more recent version of Diplomacy 4.3 is [here](https://github.com/diegoami/Diplado). 
+The repository also contains binaries.
+This mod will not be maintained
+
+## OVERVIEW
+
 Just the Diplomacy 4.3 Mod with some public domain scripts. 
 Download from Nexus: https://www.nexusmods.com/mbwarband/mods/6063
 
@@ -15,4 +21,4 @@ Download from Nexus: https://www.nexusmods.com/mbwarband/mods/6063
 * Loop to correctly select a lord for return from exile 
 
 
-Note: A new version can be found [here](https://github.com/diegoami/Diplomacy_4_3-_Steam_enhanced)
+
