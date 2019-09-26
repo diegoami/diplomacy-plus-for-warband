@@ -1,9 +1,5 @@
 # DIPLOMACY 4.3 PLUS
 
-**IMPORTANT**: A version based on a more recent version of Diplomacy 4.3 is [here](https://github.com/diegoami/Diplado). 
-The repository also contains binaries.
-This mod will not be maintained
-
 ## OVERVIEW
 
 Just the Diplomacy 4.3 Mod with some public domain scripts. 
