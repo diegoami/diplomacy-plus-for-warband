@@ -17,4 +17,6 @@ Download from Nexus: https://www.nexusmods.com/mbwarband/mods/6063
 * Loop to correctly select a lord for return from exile 
 
 
+## NEW VERSION
 
+A new iteration of this mod is [Diplado](https://github.com/diegoami/Diplado), which has many more features but it is also less stable.
